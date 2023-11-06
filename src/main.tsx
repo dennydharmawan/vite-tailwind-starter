@@ -4,10 +4,11 @@ import App from './App.tsx';
 
 import '@mantine/core/styles.css';
 import './index.css';
+import { mantineColors } from './lib/mantine.ts';
 
 const theme = createTheme({
-  /** Put your mantine theme override here */
-  primaryColor: 'blue',
+  primaryColor: 'slate',
+  colors: mantineColors,
 });
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
