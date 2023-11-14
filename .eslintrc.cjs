@@ -3,16 +3,16 @@ module.exports = {
   extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'plugin:react-hooks/recommended'],
   parser: '@typescript-eslint/parser',
   parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
-  plugins: ['react-refresh'],
+  plugins: ['react-refresh', 'tailwindcss'],
   rules: {
-    'react-refresh/only-export-components': 'warn',
-  },
-  overrides: [
-    {
-      files: ['*.js', '*.jsx'],
-      rules: {
-        '@typescript-eslint/...': 'off',
-      },
-    },
-  ],
+    'react-refresh/only-export-components': 'warn'
+  }
+  // overrides: [
+  //   {
+  //     files: ['*.js', '*.jsx'],
+  //     rules: {
+  //       '@typescript-eslint/...': 'off',
+  //     },
+  //   },
+  // ],
 };
