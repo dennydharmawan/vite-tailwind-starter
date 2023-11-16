@@ -5,10 +5,10 @@ import IconBullet from './assets/bullet-icon.svg?react';
 function App() {
   return (
     <>
-      <span className="fixed start-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary-600/20 blur-[200px]"></span>
+      <span className="fixed start-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary-700/20 blur-[200px]"></span>
 
-      <header>
-        <nav className="content-grid border-gray-200 bg-white py-2.5 dark:bg-gray-800 lg:px-6">
+      <header className="fixed bottom-0 left-0 right-0 top-0 z-50">
+        <nav className="content-grid py-2.5 dark:bg-gray-800 lg:px-6">
           <div className="flex max-w-screen-xl flex-wrap items-center justify-between">
             <a href="#" className="flex items-center">
               <img src="logo.svg" className="mr-3 h-6 sm:h-9" alt="Website Logo" />
@@ -19,7 +19,7 @@ function App() {
             <div className="flex items-center lg:order-2">
               <a
                 href="#"
-                className="rounded-lg bg-primary-700 px-4 py-2 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 lg:px-5 lg:py-2.5"
+                className="rounded-lg bg-primary-700 px-4 py-2 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-700 dark:hover:bg-primary-700 dark:focus:ring-primary-800 lg:px-5 lg:py-2.5"
               >
                 Resume
               </a>
@@ -101,10 +101,18 @@ function App() {
         </nav>
       </header>
 
-      {/* <div className="relative h-[72px] bg-red-300"></div> */}
-      <section className="content-grid my-10 bg-white dark:bg-gray-900">
-        <div className="grid max-w-screen-xl py-8 lg:grid-cols-12 lg:gap-8 lg:py-0 xl:gap-10">
-          <div className="place-self-center lg:col-span-5">
+      <section className="content-grid relative z-10 min-h-[95vh] items-center bg-blue-navy-950 pb-[8rem] pt-[calc(8rem+60px)] dark:bg-gray-900">
+        <div
+          className="full-width absolute bottom-0 left-0 right-0 top-0 h-full bg-gradient-to-b from-indigo-200 to-yellow-50"
+          style={{
+            clipPath: 'ellipse(100% 55% at 48% 44%)'
+          }}
+        ></div>
+        <div className="grid max-w-screen-xl  lg:grid-cols-12 lg:gap-8 xl:gap-10">
+          <div className="relative place-self-center lg:col-span-5">
+            {/* spinner */}
+            <div className="after:-z-1 overflow-hidden after:absolute after:-top-[12%] after:left-[1.2rem] after:aspect-square after:w-32 after:animate-[spin_10s_linear_infinite] after:rounded-lg after:bg-primary-700 after:opacity-[0.08]"></div>
+
             <h1 className="leading mb-4 text-4xl font-bold leading-snug">
               Beyond Development, Creating Solutions: Building&nbsp;
               <div className="inline-block">
@@ -136,7 +144,7 @@ function App() {
                 ></path>
               </svg>
             </a>
-            <div className="mb-20 flex items-center gap-4 font-medium">
+            <div className="flex items-center gap-4 font-medium">
               Also find me on
               <div className="h-1 w-4 rounded-md bg-orange-400"></div>
               <div className="flex gap-5 text-accent-600">
@@ -168,23 +176,31 @@ function App() {
         </div>
       </section>
 
-      <section className="content-grid relative my-20 text-white before:absolute before:bottom-0 before:left-0 before:right-0 before:top-0 before:z-0 before:skew-y-[4deg] before:bg-blue-navy-950">
-        <div className="z-10 grid max-w-screen-xl py-8 lg:grid-cols-12 lg:gap-8 lg:py-0 xl:gap-10">
-          <div className="content-grid col-span-7 [--content-max-width:360px!important]">
-            <img
-              src="https://ik.imagekit.io/tr:w-1720/ddharmawan/dennydharmawan_com/artboard-multi-device.png"
-              srcSet="https://ik.imagekit.io/ddharmawan/dennydharmawan_com/tr:w-960/artboard-multi-device.png 1920w,https://ik.imagekit.io/ddharmawan/dennydharmawan_com/tr:w-720,q-100/artboard-multi-device.png 1440w, https://ik.imagekit.io/ddharmawan/dennydharmawan_com/tr:w-480/artboard-multi-device.png 960w"
-              alt="workspace"
-              width={2800}
-              height={2000}
-              style={{
-                backgroundImage: `url("https://ik.imagekit.io/ddharmawan/dennydharmawan_com/tr:q-1,bl-6/artboard-multi-device.png")`
-              }}
-              className="object-cover object-center"
-            />
+      <section className="content-grid relative bg-blue-navy-950 py-[8rem] text-white">
+        <div className="z-10 grid py-8 lg:grid-cols-12 lg:gap-8 lg:py-0 xl:gap-10">
+          <div className="content-grid relative col-span-7 ">
+            {/* left rect */}
+            <div className="absolute top-1/2 ml-12 h-64 w-12 -translate-x-full -translate-y-1/2 rounded-l-md bg-[#00CAF4]"></div>
+
+            {/* right rect */}
+            <div className="z-2 absolute right-0 top-0 mr-12 aspect-square w-14 translate-x-1/2 translate-y-[180%] rounded-md bg-primary-500"></div>
+
+            <div className="p-12">
+              <img
+                src="https://ik.imagekit.io/tr:w-1720/ddharmawan/dennydharmawan_com/artboard-multi-device.png"
+                srcSet="https://ik.imagekit.io/ddharmawan/dennydharmawan_com/tr:w-960/artboard-multi-device.png 1920w,https://ik.imagekit.io/ddharmawan/dennydharmawan_com/tr:w-720,q-100/artboard-multi-device.png 1440w, https://ik.imagekit.io/ddharmawan/dennydharmawan_com/tr:w-480/artboard-multi-device.png 960w"
+                alt="workspace"
+                width={2800}
+                height={2000}
+                style={{
+                  backgroundImage: `url("https://ik.imagekit.io/ddharmawan/dennydharmawan_com/tr:q-1,bl-6/artboard-multi-device.png")`
+                }}
+                className="rounded-2xl object-cover object-center shadow-lg"
+              />
+            </div>
           </div>
           <div className="flex flex-col gap-8 place-self-center lg:col-span-5">
-            <h1 className="relative text-responsive-lg  font-bold after:absolute after:-top-4 after:left-0 after:h-[5px] after:w-[120px] after:rounded-lg after:bg-accent-400">
+            <h1 className="relative text-responsive-lg font-bold after:absolute after:-top-4 after:left-0 after:h-[5px] after:w-[120px] after:rounded-lg after:bg-accent-400">
               My Specialties
             </h1>
             <p className="max-w-2xl text-lg text-gray-50">
@@ -205,6 +221,203 @@ function App() {
                 UI/UX Design
               </li>
             </ul>
+          </div>
+        </div>
+      </section>
+
+      <section className="content-grid py-[6rem]">
+        <h2 className="mb-[120px] text-center">
+          <span className="relative text-responsive-lg font-bold after:absolute after:bottom-1 after:end-0 after:start-0 after:h-2 after:w-full after:scale-110 after:rounded-md after:bg-primary-700/30 after:lg:h-3">
+            Latest Projects
+          </span>
+        </h2>
+        <div>
+          <div className="flex flex-col items-center gap-16 md:flex-row">
+            <div className="text-lg text-gray-500">
+              <h2 className="text-4xl font-extrabold text-gray-900">Work with tools you already use</h2>
+
+              <p className="text-xl font-light">
+                Deliver great service experiences fast - without the complexity of traditional ITSM
+                solutions.Accelerate critical development work, eliminate toil, and deploy changes with ease.
+              </p>
+
+              <ul className="list-none border-t-2 border-solid border-gray-200 pt-8">
+                <li className="flex">
+                  <svg
+                    className="h-5 w-5 text-blue-500"
+                    fill="rgb(59, 130, 246)"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      clipRule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      fill="rgb(59, 130, 246)"
+                      fillRule="evenodd"
+                    />
+                  </svg>
+
+                  <span className="font-medium text-gray-900">Continuous integration and deployment</span>
+                </li>
+
+                <li className="flex">
+                  <svg
+                    className="h-5 w-5 text-blue-500"
+                    fill="rgb(59, 130, 246)"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      clipRule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      fill="rgb(59, 130, 246)"
+                      fillRule="evenodd"
+                    />
+                  </svg>
+
+                  <span className="font-medium text-gray-900">Development workflow</span>
+                </li>
+
+                <li className="flex">
+                  <svg
+                    className="h-5 w-5 text-blue-500"
+                    fill="rgb(59, 130, 246)"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      clipRule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      fill="rgb(59, 130, 246)"
+                      fillRule="evenodd"
+                    />
+                  </svg>
+
+                  <span className="font-medium text-gray-900">Knowledge management</span>
+                </li>
+              </ul>
+
+              <p className="text-xl font-light">
+                Deliver great service experiences fast - without the complexity of traditional ITSM solutions.
+              </p>
+            </div>
+
+            <img
+              className="flex h-[31.73rem] w-[36.50rem] rounded-lg"
+              src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/features/feature-office-1.png"
+            />
+          </div>
+
+          <div className="flex flex-col items-center gap-16 md:flex-row">
+            <img
+              className="flex h-[31.73rem] w-[36.50rem] rounded-lg"
+              src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/features/feature-office-2.png"
+            />
+
+            <div className="text-lg text-gray-500">
+              <h2 className="text-4xl font-extrabold text-gray-900">We invest in the world’s potential</h2>
+
+              <p className="text-xl font-light">
+                Deliver great service experiences fast - without the complexity of traditional ITSM
+                solutions.Accelerate critical development work, eliminate toil, and deploy changes with ease.
+              </p>
+
+              <ul className="list-none border-t-2 border-solid border-gray-200 pt-8">
+                <li className="flex">
+                  <svg
+                    className="h-5 w-5 text-blue-500"
+                    fill="rgb(59, 130, 246)"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      clipRule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      fill="rgb(59, 130, 246)"
+                      fillRule="evenodd"
+                    />
+                  </svg>
+
+                  <span className="font-medium text-gray-900">Dynamic reports and dashboards</span>
+                </li>
+
+                <li className="flex">
+                  <svg
+                    className="h-5 w-5 text-blue-500"
+                    fill="rgb(59, 130, 246)"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      clipRule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      fill="rgb(59, 130, 246)"
+                      fillRule="evenodd"
+                    />
+                  </svg>
+
+                  <span className="font-medium text-gray-900">Templates for everyone</span>
+                </li>
+
+                <li className="flex">
+                  <svg
+                    className="h-5 w-5 text-blue-500"
+                    fill="rgb(59, 130, 246)"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      clipRule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      fill="rgb(59, 130, 246)"
+                      fillRule="evenodd"
+                    />
+                  </svg>
+
+                  <span className="font-medium text-gray-900">Development workflow</span>
+                </li>
+
+                <li className="flex">
+                  <svg
+                    className="h-5 w-5 text-blue-500"
+                    fill="rgb(59, 130, 246)"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      clipRule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      fill="rgb(59, 130, 246)"
+                      fillRule="evenodd"
+                    />
+                  </svg>
+
+                  <span className="font-medium text-gray-900">Limitless business automation</span>
+                </li>
+
+                <li className="flex">
+                  <svg
+                    className="h-5 w-5 text-blue-500"
+                    fill="rgb(59, 130, 246)"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      clipRule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      fill="rgb(59, 130, 246)"
+                      fillRule="evenodd"
+                    />
+                  </svg>
+
+                  <span className="font-medium text-gray-900">Knowledge management</span>
+                </li>
+              </ul>
+
+              <p className="text-xl font-light">
+                Deliver great service experiences fast - without the complexity of traditional ITSM solutions.
+              </p>
+            </div>
           </div>
         </div>
       </section>
