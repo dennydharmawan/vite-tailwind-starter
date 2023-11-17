@@ -434,10 +434,12 @@ const colors = {
     700: '#432ad8',
     800: '#3725ae',
     900: '#302689',
-    950: '#1e1650'
+    950: '#1e1650',
+    foreground: '#FFFFFF'
   },
-  complementary: {
+  secondary: {
     DEFAULT: '#3538CD',
+    foreground: '#FFFFFF',
     25: '#F5F8FF',
     50: '#EEF4FF',
     100: '#E0EAFF',
@@ -451,22 +453,9 @@ const colors = {
     900: '#2D3282',
     950: '#1F235B'
   },
-  // accent: {
-  //   DEFAULT: '#0E7090',
-  //   25: '#F5FEFF',
-  //   50: '#ECFDFF',
-  //   100: '#CFF9FE',
-  //   200: '#A5F0FC',
-  //   300: '#67E3F9',
-  //   400: '#22CCEE',
-  //   500: '#06AED4',
-  //   600: '#088AB2',
-  //   700: '#0E7090',
-  //   800: '#155B75',
-  //   900: '#164C63',
-  //   950: '#0D2D3A'
-  // },
   accent: {
+    DEFAULT: '#18E0F8',
+    foreground: '#0F172A',
     50: '#ebffff',
     100: '#cdfdff',
     200: '#a1f8ff',
@@ -480,6 +469,8 @@ const colors = {
     950: '#053647'
   },
   error: {
+    default: '#F04438',
+    foreground: '#FFFFFF',
     25: '#FFFBFA',
     50: '#FEF3F2',
     100: '#FEE4E2',
@@ -494,6 +485,8 @@ const colors = {
     950: '#55160C'
   },
   warning: {
+    DEFAULT: '#F79009',
+    foreground: '#FFFFFF',
     25: '#FFFCF5',
     50: '#FFFAEB',
     100: '#FEF0C7',
@@ -508,6 +501,8 @@ const colors = {
     950: '#4E1D09'
   },
   success: {
+    DEFAULT: '#12B76A',
+    foreground: '#ffffff',
     25: '#F6FEF9',
     50: '#ECFDF3',
     100: '#DCFAE6',

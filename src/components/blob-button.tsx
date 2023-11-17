@@ -1,12 +1,12 @@
-import { motion } from 'framer-motion';
 import React from 'react';
+import { motion } from 'framer-motion';
 
 export default function BlobButton(props: { children: React.ReactNode }) {
   return (
     <motion.button
       initial="hidden"
       whileHover="show"
-      className="from-azul-500 to-azul-700 relative z-10 rounded-sm bg-gradient-to-tr px-8 py-3 font-semibold text-white shadow-md transition-transform duration-75 active:scale-[.95]"
+      className="relative z-10 rounded-sm bg-gradient-to-tr from-primary-500 to-primary-700 px-8 py-3 font-semibold text-white shadow-md transition-transform duration-75 active:scale-[.95]"
     >
       {props.children}
       <div className="absolute left-0 top-0 -z-20 h-full w-full overflow-hidden">
@@ -28,7 +28,7 @@ export default function BlobButton(props: { children: React.ReactNode }) {
               }}
               transition={{ delay: idx * 0.06, ease: 'easeOut' }}
               key={idx}
-              className="bg-azul-700 absolute inline-block h-full w-1/4 translate-y-full scale-150 rounded-full"
+              className="absolute inline-block h-full w-1/4 translate-y-full scale-150 rounded-full bg-primary-700"
             ></motion.div>
           ))}
         </motion.div>
