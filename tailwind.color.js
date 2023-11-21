@@ -423,7 +423,7 @@ const colors = {
 
   // Colors Extension
   primary: {
-    DEFAULT: '#4e36f5',
+    DEFAULT: '#432ad8',
     50: '#ecf0ff',
     100: '#dde3ff',
     200: '#c2cbff',
@@ -438,20 +438,20 @@ const colors = {
     foreground: '#FFFFFF'
   },
   secondary: {
-    DEFAULT: '#3538CD',
-    foreground: '#FFFFFF',
-    25: '#F5F8FF',
-    50: '#EEF4FF',
-    100: '#E0EAFF',
-    200: '#C7D7FE',
-    300: '#A4BCFD',
-    400: '#8098F9',
-    500: '#6172F3',
-    600: '#444CE7',
-    700: '#3538CD',
-    800: '#2D31A6',
-    900: '#2D3282',
-    950: '#1F235B'
+    DEFAULT: '#ECE9FE',
+    foreground: '#432ad8',
+    25: '#FBFAFF',
+    50: '#F5F3FF',
+    100: '#ECE9FE',
+    200: '#DDD6FE',
+    300: '#C3B5FD',
+    400: '#A48AFB',
+    500: '#875BF7',
+    600: '#7839EE',
+    700: '#6927DA',
+    800: '#5720B7',
+    900: '#491C96',
+    950: '#2E125E'
   },
   accent: {
     DEFAULT: '#18E0F8',
@@ -515,6 +515,9 @@ const colors = {
     800: '#085D3A',
     900: '#074D31',
     950: '#053321'
+  },
+  input: {
+    DEFAULT: '#E2E8F0'
   }
 };
 
