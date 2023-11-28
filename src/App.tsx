@@ -1,3 +1,6 @@
+import { useState } from 'react';
+import { motion, useMotionValueEvent, useScroll } from 'framer-motion';
+
 import {
   IconBrandGithub,
   IconBrandLinkedin,
@@ -14,16 +17,44 @@ import IconBullet from './assets/bullet-icon.svg?react';
 import IconHighlightUnderline from './assets/highlight-underline.svg?react';
 import IconStarsDoodle from './assets/stars-doodle.svg?react';
 import IconUnderlineDoodle from './assets/underline-doodle.svg?react';
+import jobDescriptions from './data/job-description';
 
 function App() {
+  const { scrollY } = useScroll();
+  const [isOverTheFold, setIsOverTheFold] = useState<boolean>(false);
+
+  const variants = {
+    hidden: {
+      paddingBlock: '10px',
+      backgroundColor: 'rgba(255, 255, 255, 1)',
+      boxShadow: '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)'
+    },
+    visible: {
+      paddingBlock: '16px',
+      backgroundColor: 'rgba(255, 255, 255, 0)'
+    }
+  };
+
+  useMotionValueEvent(scrollY, 'change', (latest) => {
+    if (latest > 64) {
+      setIsOverTheFold(true);
+    } else {
+      setIsOverTheFold(false);
+    }
+  });
+
   return (
     <>
       <span className="fixed start-1/2 top-1/2 h-[600px] w-[600px] rounded-full bg-primary-700/20 blur-[200px] -translate-x-1/2 -translate-y-1/2"></span>
 
       <section className="content-grid relative min-h-[95vh] items-center bg-blue-navy-950 pb-[2rem]">
-        {/* change to fixed nav */}
-        <header className="full-width absolute left-0 top-0 z-50 w-full">
-          <nav className="py-2.5 dark:bg-slate-800">
+        <motion.header
+          className="full-width fixed left-0 top-0 z-50 w-full bg-red-100"
+          animate={isOverTheFold ? 'hidden' : 'visible'}
+          initial="visible"
+          variants={variants}
+        >
+          <nav className="dark:bg-slate-800">
             <div className="flex max-w-screen-xl flex-wrap items-center justify-between">
               <a href="#" className="flex items-center">
                 <img src="logo.svg" className="mr-3 h-6 sm:h-9" alt="Website Logo" />
@@ -32,7 +63,7 @@ function App() {
                 </span>
               </a>
               <div className="flex items-center lg:order-2">
-                <Button variant="outline">
+                <Button variant="secondary">
                   <IconDownload className="mr-2 h-4 w-4" /> Resume
                 </Button>
                 <button
@@ -50,9 +81,9 @@ function App() {
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      fill-rule="evenodd"
+                      fillRule="evenodd"
                       d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                      clip-rule="evenodd"
+                      clipRule="evenodd"
                     ></path>
                   </svg>
                   <svg
@@ -62,9 +93,9 @@ function App() {
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      fill-rule="evenodd"
+                      fillRule="evenodd"
                       d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                      clip-rule="evenodd"
+                      clipRule="evenodd"
                     ></path>
                   </svg>
                 </button>
@@ -111,7 +142,7 @@ function App() {
               </div>
             </div>
           </nav>
-        </header>
+        </motion.header>
 
         {/* hero background gradient */}
         <div
@@ -133,7 +164,6 @@ function App() {
                 Impactful Websites.
                 <IconUnderlineDoodle className="absolute bottom-0 left-0 translate-y-[85%] rotate-2" />
               </span>
-              {/* <img src="/img/underline-doodle.svg" alt="underline" className="w-full -translate-y-1.5" /> */}
             </h1>
 
             <p className="prose mb-6 max-w-2xl text-lg text-slate-700 dark:text-slate-400 lg:mb-8">
@@ -153,9 +183,9 @@ function App() {
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  fill-rule="evenodd"
+                  fillRule="evenodd"
                   d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
+                  clipRule="evenodd"
                 ></path>
               </svg>
             </a>
@@ -163,13 +193,13 @@ function App() {
               Also find me on
               <div className="h-1 w-4 rounded-md bg-orange-400"></div>
               <div className="flex gap-[18px] text-accent-600">
-                <div className="relative z-10 flex items-center justify-center transition after:absolute after:left-1/2 after:top-1/2 after:-z-10 after:h-full after:w-full after:rounded-full after:bg-cyan-800 after:transition after:-translate-x-1/2 after:-translate-y-1/2 after:scale-[0] hover:text-slate-50 hover:after:scale-[1.4]">
+                <div className="relative z-10 flex items-center justify-center transition-all after:absolute after:left-1/2 after:top-1/2 after:-z-10 after:h-full after:w-full after:rounded-full after:bg-cyan-800 after:transition-all after:-translate-x-1/2 after:-translate-y-1/2 after:scale-[0] hover:text-slate-50 hover:after:scale-[1.4]">
                   <IconBrandLinkedin strokeWidth={2.5} width={32} height={32} />
                 </div>
-                <div className="relative z-10 flex items-center justify-center transition after:absolute after:left-1/2 after:top-1/2 after:-z-10 after:h-full after:w-full after:rounded-full after:bg-cyan-800 after:transition after:-translate-x-1/2 after:-translate-y-1/2 after:scale-[0] hover:text-slate-50 hover:after:scale-[1.4]">
+                <div className="relative z-10 flex items-center justify-center transition-all after:absolute after:left-1/2 after:top-1/2 after:-z-10 after:h-full after:w-full after:rounded-full after:bg-cyan-800 after:transition-all after:-translate-x-1/2 after:-translate-y-1/2 after:scale-[0] hover:text-slate-50 hover:after:scale-[1.4]">
                   <IconBrandGithub strokeWidth={2.5} width={32} height={32} />
                 </div>
-                <div className="relative z-10 flex items-center justify-center transition after:absolute after:left-1/2 after:top-1/2 after:-z-10 after:h-full after:w-full after:rounded-full after:bg-cyan-800 after:transition after:-translate-x-1/2 after:-translate-y-1/2 after:scale-[0] hover:text-slate-50 hover:after:scale-[1.4]">
+                <div className="relative z-10 flex items-center justify-center transition-all after:absolute after:left-1/2 after:top-1/2 after:-z-10 after:h-full after:w-full after:rounded-full after:bg-cyan-800 after:transition-all after:-translate-x-1/2 after:-translate-y-1/2 after:scale-[0] hover:text-slate-50 hover:after:scale-[1.4]">
                   <IconMail strokeWidth={2.5} width={32} height={32} />
                 </div>
               </div>
@@ -248,31 +278,31 @@ function App() {
         </h2>
         <div className="flex flex-col gap-[120px]">
           <div className="flex flex-col items-center gap-16 md:flex-row">
-            <div className="text-lg">
+            <div>
               <h2 className="mb-4 text-2xl font-extrabold text-slate-900">Work with tools you already use</h2>
 
-              <p className="prose mb-2 text-lg text-slate-700">
+              <p className="prose mb-2 text-lg text-slate-600">
                 Deliver great service experiences fast - without the complexity of traditional ITSM
                 solutions.Accelerate critical development work, eliminate toil, and deploy changes with ease.
               </p>
 
-              <ul className="list-none border-t-2 border-solid border-slate-200 py-8">
+              <ul className="list-none border-t-2 border-solid border-slate-200 py-8 text-lg">
                 <li className="flex items-center gap-3">
                   <IconCircleCheck className="text-primary-700" />
 
-                  <span className="font-medium text-slate-800">Continuous integration and deployment</span>
+                  <span className="font-medium text-slate-700">Continuous integration and deployment</span>
                 </li>
 
                 <li className="flex items-center gap-3">
                   <IconCircleCheck className="text-primary-700" />
 
-                  <span className="font-medium text-slate-800">Development workflow</span>
+                  <span className="font-medium text-slate-700">Development workflow</span>
                 </li>
 
                 <li className="flex items-center gap-3">
                   <IconCircleCheck className="text-primary-700" />
 
-                  <span className="font-medium text-slate-800">Knowledge management</span>
+                  <span className="font-medium text-slate-700">Knowledge management</span>
                 </li>
               </ul>
 
@@ -284,7 +314,7 @@ function App() {
 
             <img
               className="flex h-[31.73rem] w-[36.50rem] rounded-lg"
-              src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/features/feature-office-1.png"
+              src="https://flowbite.s3.amazonaws.c om/blocks/marketing-ui/features/feature-office-1.png"
             />
           </div>
 
@@ -331,70 +361,47 @@ function App() {
         </div>
       </section>
 
-      <section className="content-grid bg-blue-light-50 py-[6rem]">
+      <section className="content-grid z-50 bg-blue-light-50 py-[6rem]">
         <h2 className="mb-[120px] text-center">
           <span className="relative text-4xl font-bold after:absolute after:bottom-1 after:end-0 after:start-0 after:h-2 after:w-full after:rounded-md after:bg-primary-700/30 after:scale-110">
             Work Experience
           </span>
         </h2>
-        <div className=" grid grid-cols-[1fr_2px_3fr]">
-          <div className="ml-auto pr-6 text-right font-semibold">
-            <h3 className="text-lg">Bank BTPN - Jenius</h3>
-            <h4 className="text-md text-slate-500">Dec 2019 - Jan 2023</h4>
-          </div>
-          <div className="relative h-full bg-slate-300">
-            <div className="after absolute left-1/2 top-0 grid aspect-square w-6 place-items-center rounded-full border-2 border-primary-700 bg-primary-100 -translate-x-1/2">
-              <IconPointFilled width={12} height={12} className="text-primary-700" />
-            </div>
-          </div>
-          <div className="flex flex-col gap-8 pb-16 pl-6">
-            <h3 className="text-lg font-semibold">Backend Developer</h3>
-            <p className="prose">
-              A digital banking app from Bank BTPN with more than 3.000.000 users. It has a variety of
-              features such as savings, payment, investment, loan, and many more. I am mainly responsible for
-              lending feature.
-            </p>
-            <div>
-              <div className="mb-2 flex items-center gap-2">
-                <div className="h-1 w-7 rounded bg-orange-400"></div>
-                <h4 className=" text-lg font-medium text-primary-700">Key achievements</h4>
+
+        {jobDescriptions.map((job, idx) => {
+          return (
+            <div className=" grid grid-cols-[1fr_2px_3fr]" key={idx}>
+              <div className="ml-auto pr-6 text-right font-semibold">
+                <h3 className="text-lg">{job.company}</h3>
+                <h4 className="text-md text-slate-500">{job.date}</h4>
               </div>
-              <ul className="flex flex-col gap-2 font-normal text-slate-700">
-                <li className="flex items-start gap-3 font-medium">
-                  <IconCircleCheck className="text-primary-700" />
+              <div className="relative h-full bg-slate-300">
+                <div className="after absolute left-1/2 top-0 grid aspect-square w-6 place-items-center rounded-full border-2 border-primary-700 bg-primary-100 -translate-x-1/2">
+                  <IconPointFilled width={12} height={12} className="text-primary-700" />
+                </div>
+              </div>
+              <div className="flex flex-col gap-8 pb-16 pl-6">
+                <h3 className="text-lg font-semibold">{job.position}</h3>
+                <p className="prose">{job.description}</p>
+                <div>
+                  <div className="mb-2 flex items-center gap-2">
+                    <div className="h-1 w-7 rounded bg-orange-400"></div>
+                    <h4 className=" text-lg font-medium text-primary-700">Key achievements</h4>
+                  </div>
+                  <ul className="flex flex-col gap-2 font-normal text-slate-700">
+                    {job.keyAchievements.map((keyAchievement, idx) => (
+                      <li className="flex items-start gap-3 font-medium" key={idx}>
+                        <IconCircleCheck className="text-primary-700" />
 
-                  <span className="prose">
-                    Maintained and enhanced Flexi Cash that experienced averaged 147% increase in user growth
-                    within 3 years (https://www.jenius.com/app/fund/flexi-cash)
-                  </span>
-                </li>
-                <li className="flex gap-3 font-medium">
-                  <IconCircleCheck className="text-primary-700" />
-
-                  <span className="prose">
-                    Spearheaded partnership development with Eraphone, Sentraponsel, and Ikea in selling Flexi
-                    Cash
-                  </span>
-                </li>
-                <li className="flex gap-3 font-medium">
-                  <IconCircleCheck className="text-primary-700" />
-
-                  <span className="prose">
-                    Migrated 300+ user’s data into a new Forgerock realm on partnership platform
-                  </span>
-                </li>
-                <li className="flex gap-3 font-medium">
-                  <IconCircleCheck className="text-primary-700" />
-
-                  <span className="prose">
-                    Refactored a slow-performing website/microservices and increased its average execution
-                    time by 37%
-                  </span>
-                </li>
-              </ul>
+                        <span className="prose">{keyAchievement}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
+          );
+        })}
       </section>
 
       <section className="content-grid">
@@ -415,7 +422,7 @@ function App() {
               today.
               <IconStarsDoodle className="inline-block -translate-y-[35%]" />
             </h3>
-            <p className="prose mb-8 text-gray-700 md:text-lg lg:mb-8 lg:text-xl">
+            <p className="prose mb-8 text-lg text-gray-700">
               It all starts with an email. Get in touch and let’s kick-start something amazing together. Who
               knows, I may be the missing puzzle that you’re looking for.
             </p>
@@ -428,10 +435,53 @@ function App() {
             </a>
           </div>
         </div>
+
+        {/* curve separator */}
+        <span className="full-width grid bg-white">
+          <svg
+            width="1001"
+            height="111"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1001 111"
+            preserveAspectRatio="none"
+            className="full-width relative col-span-12 col-start-1 row-start-1 -mb-1 h-full max-h-24 w-full self-end md:max-h-36"
+          >
+            <path
+              d="M407.21 15.8956C537.851 42.4389 599.349 76.6302 838.741 93.501C917.226 99.032 967.922 93.2301 1001 81.1469L1001 111H0V21.5267C98.1188 10.501 242.474 -17.575 407.21 15.8956Z"
+              style={{
+                fill: '#0a2540'
+              }}
+            ></path>
+          </svg>
+          <svg
+            className="full-width relative col-span-12 col-start-1 row-start-1 h-full max-h-32 w-full self-end md:max-h-44"
+            preserveAspectRatio="none"
+            viewBox="0 0 1003 143"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M1002 114.237C968.911 126.309 918.6 146.592 840.089 141.066C600.613 124.211 539.244 38.2043 408.557 11.6857C243.764 -21.754 98.2857 30.6679 1.00002 67.6339"
+              style={{
+                stroke: '#41a9ef'
+              }}
+              vectorEffect="non-scaling-stroke"
+              x="0"
+              y="0"
+              width="100"
+              height="100"
+              fill="none"
+              strokeLinecap="square"
+              strokeWidth="1"
+              strokeMiterlimit="30"
+            ></path>
+          </svg>
+        </span>
       </section>
 
-      <footer className="content-grid bg-blue-navy-950 text-white">
-        <div className="my-12 flex">
+      <footer className="content-grid relative bg-blue-navy-950 text-white">
+        <div className="mb-12 mt-4 flex">
           <div className="flex items-center gap-4">
             <div className="text-xl font-semibold">Denny Dharmawan</div>
             <div className="h-full w-[1px] bg-white"></div>
@@ -439,13 +489,13 @@ function App() {
           </div>
           <div className="ml-auto">
             <div className="flex gap-[18px] text-slate-100">
-              <div className="relative z-10 flex items-center justify-center transition after:absolute after:left-1/2 after:top-1/2 after:-z-10 after:h-full after:w-full after:rounded-full after:bg-accent-400 after:transition after:-translate-x-1/2 after:-translate-y-1/2 after:scale-[0] hover:text-blue-navy-950 hover:after:scale-[1.4]">
+              <div className="relative z-10 flex items-center justify-center transition-all after:absolute after:left-1/2 after:top-1/2 after:-z-10 after:h-full after:w-full after:rounded-full after:bg-accent-400 after:transition-all after:-translate-x-1/2 after:-translate-y-1/2 after:scale-[0] hover:text-blue-navy-950 hover:after:scale-[1.4]">
                 <IconBrandLinkedin width={32} height={32} />
               </div>
-              <div className="relative z-10 flex items-center justify-center transition after:absolute after:left-1/2 after:top-1/2 after:-z-10 after:h-full after:w-full after:rounded-full after:bg-accent-400 after:transition after:-translate-x-1/2 after:-translate-y-1/2 after:scale-[0] hover:text-blue-navy-950 hover:after:scale-[1.4]">
+              <div className="relative z-10 flex items-center justify-center transition-all after:absolute after:left-1/2 after:top-1/2 after:-z-10 after:h-full after:w-full after:rounded-full after:bg-accent-400 after:transition-all after:-translate-x-1/2 after:-translate-y-1/2 after:scale-[0] hover:text-blue-navy-950 hover:after:scale-[1.4]">
                 <IconBrandGithub width={32} height={32} />
               </div>
-              <div className="relative z-10 flex items-center justify-center transition after:absolute after:left-1/2 after:top-1/2 after:-z-10 after:h-full after:w-full after:rounded-full after:bg-accent-400 after:transition after:-translate-x-1/2 after:-translate-y-1/2 after:scale-[0] hover:text-blue-navy-950 hover:after:scale-[1.4]">
+              <div className="relative z-10 flex items-center justify-center transition-all after:absolute after:left-1/2 after:top-1/2 after:-z-10 after:h-full after:w-full after:rounded-full after:bg-accent-400 after:transition-all after:-translate-x-1/2 after:-translate-y-1/2 after:scale-[0] hover:text-blue-navy-950 hover:after:scale-[1.4]">
                 <IconMail width={32} height={32} />
               </div>
             </div>
