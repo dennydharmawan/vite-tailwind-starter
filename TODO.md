@@ -4,3 +4,5 @@ improve cumulative layout shift from swapping inter font
 <!-- https://www.youtube.com/watch?v=83j3Z4heXH0 -->
 
 my specialties section: add skill badges and make them interactive when clicking the skills
+
+Removed mantine

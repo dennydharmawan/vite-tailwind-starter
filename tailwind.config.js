@@ -112,7 +112,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        inter: ['Inter', ...defaultTheme.fontFamily.sans]
+        inter: ['Inter', 'Roboto', 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', 'Arial', 'sans-serif']
       },
       fontSize: {
         'responsive-xs': 'var(--font-size-xs)',

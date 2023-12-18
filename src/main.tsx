@@ -4,7 +4,8 @@ import { createTheme, MantineProvider } from '@mantine/core';
 
 import '@mantine/core/styles.css';
 
-import App from './App.tsx';
+import { Routes } from '@generouted/react-router';
+
 import { mantineColors } from './lib/mantine.ts';
 
 import './styles/base.css';
@@ -16,6 +17,6 @@ const theme = createTheme({
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <MantineProvider theme={theme}>
-    <App />
+    <Routes />
   </MantineProvider>
 );

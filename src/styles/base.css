@@ -69,11 +69,14 @@ img {
 }
 
 .mask-layer {
-  -webkit-mask-image: url(https://tympanus.net/codrops-playground/assets/images/cssref/properties/mask-position/mask-image.png);
-  mask-image: url(https://tympanus.net/codrops-playground/assets/images/cssref/properties/mask-position/mask-image.png);
-  -webkit-mask-size: 105% 120%;
-  -webkit-mask-position: center 30%;
+  /* -webkit-mask-image: url(https://tympanus.net/codrops-playground/assets/images/cssref/properties/mask-position/mask-image.png);
+  mask-image: url(https://tympanus.net/codrops-playground/assets/images/cssref/properties/mask-position/mask-image.png); */
+  mask-image: url(/img/mask-image.svg);
+
+  -webkit-mask-size: 100% 100%;
+  -webkit-mask-position: center;
   -webkit-mask-repeat: no-repeat;
-  /* mask-size: 100% 100%; */
-  transition: -webkit-mask-size .3s;
+  mask-size: 100% 100%;
+  mask-position: center 30%;
+  mask-repeat: no-repeat;
 }

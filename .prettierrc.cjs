@@ -25,6 +25,5 @@ module.exports = {
   // https://github.com/tailwindlabs/prettier-plugin-tailwindcss
   plugins: ['@ianvs/prettier-plugin-sort-imports', 'prettier-plugin-tailwindcss'],
   pluginSearchDirs: false,
-  // tailwindConfig: './packages/clientRefactor/tailwind.config.js',
   tailwindFunctions: ['clsx', 'twMerge', 'cn', 'cva', 'tw']
 };

@@ -11,15 +11,16 @@ import {
   IconPointFilled
 } from '@tabler/icons-react';
 
+import IconBullet from '@/assets/bullet-icon.svg?react';
+import IconHighlightUnderline from '@/assets/highlight-underline.svg?react';
+import IconStarsDoodle from '@/assets/stars-doodle.svg?react';
+import IconUnderlineDoodle from '@/assets/underline-doodle.svg?react';
 import { Button } from '@/components/ui/button';
-
-import IconBullet from './assets/bullet-icon.svg?react';
-import IconHighlightUnderline from './assets/highlight-underline.svg?react';
-import IconStarsDoodle from './assets/stars-doodle.svg?react';
-import IconUnderlineDoodle from './assets/underline-doodle.svg?react';
-import jobDescriptions from './data/job-description';
+import jobDescriptions from '@/data/job-description';
 
 function App() {
+  const [showProjectsFlag, setShowProjectsFlag] = useState<boolean>(false);
+
   const { scrollY } = useScroll();
   const [isOverTheFold, setIsOverTheFold] = useState<boolean>(false);
 
@@ -46,7 +47,6 @@ function App() {
   return (
     <>
       <span className="fixed start-1/2 top-1/2 h-[600px] w-[600px] rounded-full bg-primary-700/20 blur-[200px] -translate-x-1/2 -translate-y-1/2"></span>
-
       <section className="content-grid relative min-h-[95vh] items-center bg-blue-navy-950 pb-[2rem]">
         <motion.header
           className="full-width fixed left-0 top-0 z-50 w-full bg-red-100"
@@ -59,7 +59,7 @@ function App() {
               <a href="#" className="flex items-center">
                 <img src="logo.svg" className="mr-3 h-6 sm:h-9" alt="Website Logo" />
                 <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-                  John Doe
+                  Denny Dharmawan
                 </span>
               </a>
               <div className="flex items-center lg:order-2">
@@ -114,14 +114,16 @@ function App() {
                       Home
                     </a>
                   </li>
-                  <li>
-                    <a
-                      href="#"
-                      className="block border-b border-slate-100 py-2 pl-3 pr-4 text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-white lg:border-0 lg:p-0 lg:hover:bg-transparent lg:hover:text-primary-700 lg:dark:hover:bg-transparent lg:dark:hover:text-white"
-                    >
-                      Projects
-                    </a>
-                  </li>
+                  {showProjectsFlag && (
+                    <li>
+                      <a
+                        href="#"
+                        className="block border-b border-slate-100 py-2 pl-3 pr-4 text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-white lg:border-0 lg:p-0 lg:hover:bg-transparent lg:hover:text-primary-700 lg:dark:hover:bg-transparent lg:dark:hover:text-white"
+                      >
+                        Projects
+                      </a>
+                    </li>
+                  )}
                   <li>
                     <a
                       href="#"
@@ -167,7 +169,7 @@ function App() {
             </h1>
 
             <p className="prose mb-6 max-w-2xl text-lg text-slate-700 dark:text-slate-400 lg:mb-8">
-              Hi, my name’s John Doe. A software engineer with 5+ years experience in developing and
+              Hi, my name’s Denny Dharmawan. A software engineer with 5+ years experience in developing and
               maintaining websites. I possess a strong orientation towards personal development, enjoy
               learning about new technologies, and have passion for web development.
             </p>
@@ -212,15 +214,16 @@ function App() {
               // alt="workspace"
               width={2800}
               height={2000}
-              style={{
-                backgroundImage: `url("https://ik.imagekit.io/ddharmawan/dennydharmawan_com/tr:q-1,bl-6/artboard-workspace.png")`
-              }}
+              // style={{
+              //   backgroundImage: `url("https://ik.imagekit.io/ddharmawan/dennydharmawan_com/tr:q-1,bl-6/artboard-workspace.png")`
+              // }}
               className="mask-layer object-cover object-center"
+              // className="z-40 bg-red-100"
+              alt="workspace"
             />
           </div>
         </div>
       </section>
-
       <section className="content-grid relative bg-blue-navy-950 py-[8rem] text-white">
         <div className="grid py-8 lg:grid-cols-12 lg:gap-8 lg:py-0 xl:gap-10">
           <div className="content-grid relative col-span-7 ">
@@ -269,97 +272,110 @@ function App() {
           </div>
         </div>
       </section>
+      {showProjectsFlag && (
+        <>
+          <section className="content-grid py-[6rem]">
+            <h2 className="mb-[120px] text-center">
+              <span className="relative text-4xl font-bold after:absolute after:bottom-1 after:end-0 after:start-0 after:h-2 after:w-full after:rounded-md after:bg-primary-700/30 after:scale-110">
+                My Projects
+              </span>
+            </h2>
+            <div className="flex flex-col gap-[120px]">
+              <div className="flex flex-col items-center gap-16 md:flex-row">
+                <div>
+                  <h2 className="mb-4 text-2xl font-extrabold text-slate-900">
+                    Work with tools you already use
+                  </h2>
 
-      <section className="content-grid py-[6rem]">
-        <h2 className="mb-[120px] text-center">
-          <span className="relative text-4xl font-bold after:absolute after:bottom-1 after:end-0 after:start-0 after:h-2 after:w-full after:rounded-md after:bg-primary-700/30 after:scale-110">
-            My Projects
-          </span>
-        </h2>
-        <div className="flex flex-col gap-[120px]">
-          <div className="flex flex-col items-center gap-16 md:flex-row">
-            <div>
-              <h2 className="mb-4 text-2xl font-extrabold text-slate-900">Work with tools you already use</h2>
+                  <p className="prose mb-2 text-lg text-slate-600">
+                    Deliver great service experiences fast - without the complexity of traditional ITSM
+                    solutions.Accelerate critical development work, eliminate toil, and deploy changes with
+                    ease.
+                  </p>
 
-              <p className="prose mb-2 text-lg text-slate-600">
-                Deliver great service experiences fast - without the complexity of traditional ITSM
-                solutions.Accelerate critical development work, eliminate toil, and deploy changes with ease.
-              </p>
+                  <ul className="list-none border-t-2 border-solid border-slate-200 py-8 text-lg">
+                    <li className="flex items-center gap-3">
+                      <IconCircleCheck className="text-primary-700" />
 
-              <ul className="list-none border-t-2 border-solid border-slate-200 py-8 text-lg">
-                <li className="flex items-center gap-3">
-                  <IconCircleCheck className="text-primary-700" />
+                      <span className="font-medium text-slate-700">
+                        Continuous integration and deployment
+                      </span>
+                    </li>
 
-                  <span className="font-medium text-slate-700">Continuous integration and deployment</span>
-                </li>
+                    <li className="flex items-center gap-3">
+                      <IconCircleCheck className="text-primary-700" />
 
-                <li className="flex items-center gap-3">
-                  <IconCircleCheck className="text-primary-700" />
+                      <span className="font-medium text-slate-700">Development workflow</span>
+                    </li>
 
-                  <span className="font-medium text-slate-700">Development workflow</span>
-                </li>
+                    <li className="flex items-center gap-3">
+                      <IconCircleCheck className="text-primary-700" />
 
-                <li className="flex items-center gap-3">
-                  <IconCircleCheck className="text-primary-700" />
+                      <span className="font-medium text-slate-700">Knowledge management</span>
+                    </li>
+                  </ul>
 
-                  <span className="font-medium text-slate-700">Knowledge management</span>
-                </li>
-              </ul>
+                  <div className="flex gap-4">
+                    <Button>Live Preview</Button>
+                    <Button variant="secondary">Source Code</Button>
+                  </div>
+                </div>
 
-              <div className="flex gap-4">
-                <Button>Live Preview</Button>
-                <Button variant="secondary">Source Code</Button>
+                <img
+                  className="flex h-[31.73rem] w-[36.50rem] rounded-lg"
+                  src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/features/feature-office-2.png"
+                />
+              </div>
+
+              <div className="flex flex-col items-center gap-16 md:flex-row">
+                <img
+                  className="flex h-[31.73rem] w-[36.50rem] rounded-lg"
+                  src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/features/feature-office-2.png"
+                />
+
+                <div>
+                  <h2 className="mb-4 text-2xl font-extrabold text-slate-900">
+                    Work with tools you already use
+                  </h2>
+
+                  <p className="prose mb-2 text-lg text-slate-600">
+                    Deliver great service experiences fast - without the complexity of traditional ITSM
+                    solutions.Accelerate critical development work, eliminate toil, and deploy changes with
+                    ease.
+                  </p>
+
+                  <ul className="list-none border-t-2 border-solid border-slate-200 py-8 text-lg">
+                    <li className="flex items-center gap-3">
+                      <IconCircleCheck className="text-primary-700" />
+
+                      <span className="font-medium text-slate-700">
+                        Continuous integration and deployment
+                      </span>
+                    </li>
+
+                    <li className="flex items-center gap-3">
+                      <IconCircleCheck className="text-primary-700" />
+
+                      <span className="font-medium text-slate-700">Development workflow</span>
+                    </li>
+
+                    <li className="flex items-center gap-3">
+                      <IconCircleCheck className="text-primary-700" />
+
+                      <span className="font-medium text-slate-700">Knowledge management</span>
+                    </li>
+                  </ul>
+
+                  <div className="flex gap-4">
+                    <Button>Live Preview</Button>
+                    <Button variant="secondary">Source Code</Button>
+                  </div>
+                </div>
               </div>
             </div>
-
-            <img
-              className="flex h-[31.73rem] w-[36.50rem] rounded-lg"
-              src="https://flowbite.s3.amazonaws.c om/blocks/marketing-ui/features/feature-office-1.png"
-            />
-          </div>
-
-          <div className="flex flex-col items-center gap-16 md:flex-row">
-            <img
-              className="flex h-[31.73rem] w-[36.50rem] rounded-lg"
-              src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/features/feature-office-2.png"
-            />
-
-            <div className="text-lg">
-              <h2 className="mb-4 text-2xl font-extrabold text-slate-900">Work with tools you already use</h2>
-
-              <p className="prose mb-2 text-lg text-slate-700">
-                Deliver great service experiences fast - without the complexity of traditional ITSM
-                solutions.Accelerate critical development work, eliminate toil, and deploy changes with ease.
-              </p>
-
-              <ul className="list-none border-t-2 border-solid border-slate-200 py-8">
-                <li className="flex items-center gap-3">
-                  <IconCircleCheck className="text-primary-700" />
-
-                  <span className="font-medium text-slate-800">Continuous integration and deployment</span>
-                </li>
-
-                <li className="flex items-center gap-3">
-                  <IconCircleCheck className="text-primary-700" />
-
-                  <span className="font-medium text-slate-800">Development workflow</span>
-                </li>
-
-                <li className="flex items-center gap-3">
-                  <IconCircleCheck className="text-primary-700" />
-
-                  <span className="font-medium text-slate-800">Knowledge management</span>
-                </li>
-              </ul>
-
-              <div className="flex gap-4">
-                <Button>Live Preview</Button>
-                <Button variant="outline">Source Code</Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+          </section>
+        </>
+      )}
 
       <section className="content-grid z-50 bg-blue-light-50 py-[6rem]">
         <h2 className="mb-[120px] text-center">
@@ -403,7 +419,6 @@ function App() {
           );
         })}
       </section>
-
       <section className="content-grid">
         <div className="grid max-w-screen-xl px-4 py-8 lg:grid-cols-12 lg:gap-8 lg:py-16 xl:gap-0">
           <div className="mr-auto hidden lg:col-span-5 lg:mt-0 lg:flex">
@@ -427,7 +442,7 @@ function App() {
               knows, I may be the missing puzzle that you’re looking for.
             </p>
             <a
-              href="#"
+              href="mailto:contact@dennydharmawan.com"
               className="relative inline-flex items-center justify-center rounded-lg bg-primary-600 px-5 py-3 text-center text-base font-medium text-white after:absolute after:left-2 after:top-2 after:-z-10 after:h-full after:w-full after:rounded-lg after:bg-slate-400 hover:bg-primary-700 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900"
             >
               Let's chat
@@ -479,7 +494,6 @@ function App() {
           </svg>
         </span>
       </section>
-
       <footer className="content-grid relative bg-blue-navy-950 text-white">
         <div className="mb-12 mt-4 flex">
           <div className="flex items-center gap-4">
