@@ -30,3 +30,4 @@ dist-ssr
 # misc
 .DS_Store
 *.pem
+.vercel
