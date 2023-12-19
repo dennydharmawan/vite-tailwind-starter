@@ -10,7 +10,7 @@ const jobDescriptions = [
       'Engineered strategic collaborations with Eraphone, Sentraponsel, and Ikea, facilitating the seamless integration and widespread distribution of Flexi-Cash, optimizing its market reach and accessibility.',
       'Seamlessly migrated data of over 300 users to a new Forgerock realm on a partnership platform, ensuring a smooth transition and operational continuity.',
       'Optimized a slow-performing website and microservices, resulting in a remarkable 37% reduction in average execution time, enhancing user experience and efficiency.',
-      'Played a pivotal role in supporting the development and successful launch of the credit-card product in 2022 (Explore jenius credit-card: https://www.jenius.com/app/credit/kartu-kredit).',
+      'Played a role in supporting the development and successful launch of the credit-card product in 2022 (Explore jenius credit-card: https://www.jenius.com/app/credit/kartu-kredit).',
       'Consistently met and surpassed squad targets, achieving a minimum of 90% success on each scrum sprint, showcasing dedication and consistent performance.',
       'Maintained an above-average performance score (4 out of 5) on performance reviews for three consecutive years, demonstrating consistent excellence and exceeding expectations.'
     ]
@@ -35,8 +35,8 @@ const jobDescriptions = [
       'The Software Laboratory Center (SLC) stands as a premier technical service unit within Binus University, dedicated to delivering high-quality, software-based practical experiences to students. Known for its rigorous selection process, SLC attracts hundreds of student applicants for assistant roles, handpicking only the most outstanding candidates. In addition to fulfilling my responsibilities as a lab assistant, I actively engaged in numerous research initiatives and competitive activities, further enhancing my skills and contributions within the software development landscape.',
     keyAchievements: [
       'Recognized as the Top Performing Assistant, showcasing exceptional performance and dedication in my role.',
-      'Honored with the Best Research Interest Group award in Optical Character Recognition subject, demonstrating a keen interest and proficiency in researching a specialized field.',
-      'Earned the 3rd position in the XL Samsung Android Application Contest, showcasing innovative prowess and technical expertise in app development.'
+      'Honored with the Best Research Interest Group award in Optical Character Recognition subject, highlighting a keen interest and proficiency in researching a specialized field.',
+      'Earned the 3rd position in the XL Samsung Android Application Contest, demonstrating innovative prowess and technical expertise in app development.'
     ]
   }
 ];

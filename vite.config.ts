@@ -12,5 +12,5 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src')
     }
   },
-  plugins: [svgr(), react(), generouted()]
+  plugins: [svgr(), generouted(), react()]
 });

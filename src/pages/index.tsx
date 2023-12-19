@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion, useMotionValueEvent, useScroll } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 import {
   IconBrandGithub,
@@ -17,6 +18,7 @@ import IconStarsDoodle from '@/assets/stars-doodle.svg?react';
 import IconUnderlineDoodle from '@/assets/underline-doodle.svg?react';
 import { Button } from '@/components/ui/button';
 import jobDescriptions from '@/data/job-description';
+import { downloadFile } from '@/lib/utils';
 
 function App() {
   const [showProjectsFlag, setShowProjectsFlag] = useState<boolean>(false);
@@ -46,7 +48,7 @@ function App() {
 
   return (
     <>
-      <span className="fixed start-1/2 top-1/2 h-[600px] w-[600px] rounded-full bg-primary-700/20 blur-[200px] -translate-x-1/2 -translate-y-1/2"></span>
+      <span className="pointer-events-none fixed start-1/2 top-1/2 h-[600px] w-[600px] rounded-full bg-primary-700/20 blur-[200px] -translate-x-1/2 -translate-y-1/2"></span>
       <section className="content-grid relative min-h-[95vh] items-center bg-blue-navy-950 pb-[2rem]">
         <motion.header
           className="full-width fixed left-0 top-0 z-50 w-full bg-red-100"
@@ -58,12 +60,18 @@ function App() {
             <div className="flex max-w-screen-xl flex-wrap items-center justify-between">
               <a href="#" className="flex items-center">
                 <img src="logo.svg" className="mr-3 h-6 sm:h-9" alt="Website Logo" />
-                <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-                  Denny Dharmawan
-                </span>
+                <div className="flex flex-col">
+                  <span className="whitespace-nowrap text-xl font-semibold dark:text-white">
+                    Denny Dharmawan
+                  </span>
+                  {/* <span className="font-base whitespace-nowrap dark:text-white">Fullstack developer</span> */}
+                </div>
               </a>
               <div className="flex items-center lg:order-2">
-                <Button variant="secondary">
+                <Button
+                  variant="secondary"
+                  onClick={() => downloadFile('/files/denny_dharmawan_resume_dec2023.pdf')}
+                >
                   <IconDownload className="mr-2 h-4 w-4" /> Resume
                 </Button>
                 <button
@@ -195,15 +203,23 @@ function App() {
               Also find me on
               <div className="h-1 w-4 rounded-md bg-orange-400"></div>
               <div className="flex gap-[18px] text-accent-600">
-                <div className="relative z-10 flex items-center justify-center transition-all after:absolute after:left-1/2 after:top-1/2 after:-z-10 after:h-full after:w-full after:rounded-full after:bg-cyan-800 after:transition-all after:-translate-x-1/2 after:-translate-y-1/2 after:scale-[0] hover:text-slate-50 hover:after:scale-[1.4]">
-                  <IconBrandLinkedin strokeWidth={2.5} width={32} height={32} />
-                </div>
-                <div className="relative z-10 flex items-center justify-center transition-all after:absolute after:left-1/2 after:top-1/2 after:-z-10 after:h-full after:w-full after:rounded-full after:bg-cyan-800 after:transition-all after:-translate-x-1/2 after:-translate-y-1/2 after:scale-[0] hover:text-slate-50 hover:after:scale-[1.4]">
-                  <IconBrandGithub strokeWidth={2.5} width={32} height={32} />
-                </div>
-                <div className="relative z-10 flex items-center justify-center transition-all after:absolute after:left-1/2 after:top-1/2 after:-z-10 after:h-full after:w-full after:rounded-full after:bg-cyan-800 after:transition-all after:-translate-x-1/2 after:-translate-y-1/2 after:scale-[0] hover:text-slate-50 hover:after:scale-[1.4]">
-                  <IconMail strokeWidth={2.5} width={32} height={32} />
-                </div>
+                <Link to="https://linkedin.com/in/ddharmawan" target="_blank">
+                  <div className="relative z-10 flex items-center justify-center transition-all after:absolute after:left-1/2 after:top-1/2 after:-z-10 after:h-full after:w-full after:rounded-full after:bg-cyan-800 after:transition-all after:-translate-x-1/2 after:-translate-y-1/2 after:scale-[0] hover:text-slate-50 hover:after:scale-[1.4]">
+                    <IconBrandLinkedin strokeWidth={2.5} width={32} height={32} />
+                  </div>
+                </Link>
+
+                <Link to="https://github.com/dennydharmawan" target="_blank">
+                  <div className="relative z-10 flex items-center justify-center transition-all after:absolute after:left-1/2 after:top-1/2 after:-z-10 after:h-full after:w-full after:rounded-full after:bg-cyan-800 after:transition-all after:-translate-x-1/2 after:-translate-y-1/2 after:scale-[0] hover:text-slate-50 hover:after:scale-[1.4]">
+                    <IconBrandGithub strokeWidth={2.5} width={32} height={32} />
+                  </div>
+                </Link>
+
+                <Link to="mailto:contact@dennydharmawan.com" target="_blank">
+                  <div className="relative z-10 flex items-center justify-center transition-all after:absolute after:left-1/2 after:top-1/2 after:-z-10 after:h-full after:w-full after:rounded-full after:bg-cyan-800 after:transition-all after:-translate-x-1/2 after:-translate-y-1/2 after:scale-[0] hover:text-slate-50 hover:after:scale-[1.4]">
+                    <IconMail strokeWidth={2.5} width={32} height={32} />
+                  </div>
+                </Link>
               </div>
             </div>
           </div>
