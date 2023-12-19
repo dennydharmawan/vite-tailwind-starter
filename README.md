@@ -17,3 +17,4 @@ Features:
 ## License
 
 [MIT licensed](LICENSE)
+# vite-tailwind-starter
