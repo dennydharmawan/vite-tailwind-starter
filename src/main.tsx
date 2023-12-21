@@ -11,7 +11,8 @@ import { mantineColors } from './lib/mantine.ts';
 import './styles/base.css';
 
 const theme = createTheme({
-  primaryColor: 'slate',
+  primaryColor: 'blue',
+  // primaryShade: 7,
   colors: mantineColors
 });
 

@@ -1,3 +1,5 @@
+import * as _ from 'lodash-es';
+
 import { type MantineThemeColors } from '@mantine/core';
 
 import colors from '../../tailwind.color';
@@ -32,14 +34,11 @@ declare module '@mantine/core' {
 
 const mantineColors = Object.fromEntries(
   Object.entries(colors)
-    .filter(([k, v]) => typeof v !== 'string')
+    .filter(([, v]) => typeof v !== 'string')
     .map(([k, v]) => {
-      // const filteredColor: TailwindColor = v;
-      // // delete filteredColor.DEFAULT;
-      // delete filteredColor[25];
-      // delete filteredColor[950];
+      const filteredColors = _.pick(v, [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950]);
 
-      return [k, Object.values(v)];
+      return [k, Object.values(filteredColors)];
     })
 ) as unknown as MantineThemeColors;
 
