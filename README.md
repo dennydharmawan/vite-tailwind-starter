@@ -1,4 +1,4 @@
-## Mantine & Tailwind in harmony
+# Mantine & Tailwind in harmony
 
 The excellent Mantine component library in harmony with tailwind.
 
@@ -17,4 +17,5 @@ Features:
 ## License
 
 [MIT licensed](LICENSE)
-# vite-tailwind-starter
+
+## vite-tailwind-starter

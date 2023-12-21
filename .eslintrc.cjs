@@ -20,12 +20,4 @@ module.exports = {
       version: 'detect'
     }
   }
-  // overrides: [
-  //   {
-  //     files: ['*.js', '*.jsx'],
-  //     rules: {
-  //       '@typescript-eslint/...': 'off',
-  //     },
-  //   },
-  // ],
 };
